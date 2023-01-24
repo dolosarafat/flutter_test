@@ -48,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
       case 1:
         return const Thing2Game();
       case 2:
-        return Thing3Game();
+        return const Thing3Game();
       default:
         return Container();
     }
@@ -139,7 +139,7 @@ class _Thing1GameState extends State<Thing1Game> {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        Text('Score: $_score'),
+        Text('Number: $_score'),
         ElevatedButton(
           child: const Text('Add Number'),
           onPressed: _incrementScore,
