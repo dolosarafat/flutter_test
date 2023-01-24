@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 import 'dart:async';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -42,9 +44,9 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget _getGameByIndex(int index) {
     switch (index) {
       case 0:
-        return Thing1Game();
+        return const Thing1Game();
       case 1:
-        return Thing2Game();
+        return const Thing2Game();
       case 2:
         return Thing3Game();
       default:
@@ -71,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
         .toList();
     drawerItemWidgets.insert(
       0,
-      DrawerHeader(
+      const DrawerHeader(
         child: Text('The button to open what is already on the navbar'),
         decoration: BoxDecoration(
           color: Colors.teal,
@@ -80,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
     return Scaffold(
       appBar: AppBar(
-        title: Text("Abdullah Test"),
+        title: const Text("Abdullah Test"),
       ),
       body: Center(
         child: _getGameByIndex(_currentPageIndex),
@@ -112,6 +114,8 @@ class Page {
 }
 
 class Thing1Game extends StatefulWidget {
+  const Thing1Game({Key? key}) : super(key: key);
+
   @override
   _Thing1GameState createState() => _Thing1GameState();
 }
@@ -136,12 +140,12 @@ class _Thing1GameState extends State<Thing1Game> {
     return Column(
       children: <Widget>[
         Text('Score: $_score'),
-        RaisedButton(
-          child: Text('Add Number'),
+        ElevatedButton(
+          child: const Text('Add Number'),
           onPressed: _incrementScore,
         ),
-        RaisedButton(
-          child: Text('Subtract Number'),
+        ElevatedButton(
+          child: const Text('Subtract Number'),
           onPressed: _uncrementScore,
         ),
       ],
@@ -150,6 +154,8 @@ class _Thing1GameState extends State<Thing1Game> {
 }
 
 class Thing2Game extends StatefulWidget {
+  const Thing2Game({Key? key}) : super(key: key);
+
   @override
   _Thing2GameState createState() => _Thing2GameState();
 }
@@ -163,7 +169,7 @@ class _Thing2GameState extends State<Thing2Game> {
     _timer = null;
   }
   void _startTimer() {
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       setState(() {
         _countdown--;
         if (_countdown == 0) {
@@ -196,7 +202,7 @@ class _Thing2GameState extends State<Thing2Game> {
           padding: const EdgeInsets.all(8.0),
           child: TextField(
             keyboardType: TextInputType.number,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               labelText: 'Enter countdown',
             ),
             onChanged: (text) {
@@ -205,12 +211,12 @@ class _Thing2GameState extends State<Thing2Game> {
           ),
         ),
         _isRunning
-            ? RaisedButton(
-                child: Text('Stop Timer'),
+            ? ElevatedButton(
+                child: const Text('Stop Timer'),
                 onPressed: _stopTimer,
               )
-            : RaisedButton(
-                child: Text('Start Timer'),
+            : ElevatedButton(
+                child: const Text('Start Timer'),
                 onPressed: _startTimer,
               ),
       ],
@@ -219,6 +225,8 @@ class _Thing2GameState extends State<Thing2Game> {
 }
 
 class Thing3Game extends StatefulWidget {
+  const Thing3Game({Key? key}) : super(key: key);
+
   @override
   _Thing3GameState createState() => _Thing3GameState();
 }
@@ -237,8 +245,8 @@ class _Thing3GameState extends State<Thing3Game> {
     return Column(
       children: <Widget>[
         Text('Random Number: $_randomNumber'),
-        RaisedButton(
-          child: Text('Generate Random Number'),
+        ElevatedButton(
+          child: const Text('Generate Random Number'),
           onPressed: _generateRandomNumber,
         ),
       ],
