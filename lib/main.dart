@@ -22,7 +22,6 @@ class MyHomePage extends StatefulWidget {
     Page('Profile', Icons.person_outline),
   ];
 
-
   MyHomePage({Key? key}) : super(key: key);
 
   @override
@@ -42,8 +41,8 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     List<Widget> drawerItemWidgets = widget._pages
         .asMap()
-        .map((int index, Page page) =>
-        MapEntry<int, Widget>(index,
+        .map((int index, Page page) => MapEntry<int, Widget>(
+            index,
             ListTile(
               title: Text(page.title),
               leading: Icon(page.iconData),
@@ -52,15 +51,18 @@ class _MyHomePageState extends State<MyHomePage> {
                 _openPage(index);
                 Navigator.pop(context);
               },
-            )
-        )
-    ).values.toList();
-    drawerItemWidgets.insert(0, DrawerHeader(
-      child: Text('Drawer Header'),
-      decoration: BoxDecoration(
-        color: Colors.blue,
+            )))
+        .values
+        .toList();
+    drawerItemWidgets.insert(
+      0,
+      DrawerHeader(
+        child: Text('Drawer Header'),
+        decoration: BoxDecoration(
+          color: Colors.blue,
+        ),
       ),
-    ),);
+    );
     return Scaffold(
       appBar: AppBar(
         title: Text("Bottom Navigation Bar and Drawer Page"),
@@ -76,13 +78,15 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentPageIndex,
-        items: widget._pages.map((Page page) =>
-            BottomNavigationBarItem(
-              icon: Icon(page.iconData),
-              label: page.title,
-            )).toList(),
+        items: widget._pages
+            .map((Page page) => BottomNavigationBarItem(
+                  icon: Icon(page.iconData),
+                  label: page.title,
+                ))
+            .toList(),
         onTap: _openPage,
-      ),);
+      ),
+    );
   }
 }
 
